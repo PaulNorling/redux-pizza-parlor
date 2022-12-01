@@ -1,53 +1,67 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function Checkout(){
+    const history = useHistory();
 
-    
 
-    const [name, setName] = useState('NAME PLACEHOLDER');
-    const [streetAddress, setStreetAddress] = useState('555 Applewood Lane Placeholder');
-    const [cityState, setCityState] = useState('Minneapolis, MN Placeholder')
-    const [zipCode, setZipCode] = useState(55118)
+    const userInfo = useSelector(store => store.orderReducer);
+    console.log('User info: ', userInfo);
+    const pizzaOrder = useSelector(store => store.pizzaOrderReducer);
+    console.log('Pizza order: ', pizzaOrder);
 
-    const [type, setDeliverOrTakeout] = useState('For Deliver')
+    function setData() {
+        setName(userInfo.newName);
+        setStreetAddress(userInfo.newStreetAddress);
+        setCityState(userInfo.newCity);
+        setZipCode(userInfo.newZip)
+        setDeliverOrTakeout(userInfo.type);
+        setOrder(pizzaOrder);
+        let newTotal = calcTotal(order);
+        setTotal(newTotal);
+    }
 
-    const checkoutItemsArray =
-        [
-            {name:'pep', price: 2.12, quantity: 1}, 
-            {name:'pep1', price: 3.12, quantity: 1},
-            {name:'pep2', price: 4.12, quantity: 1},
-            {name:'pep3', price: 5.12, quantity: 1}
-        ];
+    const [name, setName] = useState('');
+    const [streetAddress, setStreetAddress] = useState('');
+    const [cityState, setCityState] = useState('')
+    const [zipCode, setZipCode] = useState('')
+    const [type, setDeliverOrTakeout] = useState('')
+
+    const [order, setOrder] = useState([]);
 
     const [total, setTotal] = useState(0);
         
-    const calcTotal = () => {
+    const calcTotal = (order) => {
         let total = 0;
-        checkoutItemsArray.map(item =>{
-            total += item.price;
+        order.map(item =>{
+            console.log(item.price);
+            total += Number(item.price);
         })
-        setTotal(total);
+        console.log('Checkout total',total);
+        return total;
     }
 
     const handleCheckout = () => {
         console.log('Checkout Attempt');
         //pass object to database as order
-        axios.post('./api/order', {
+        const sendData = {
             customer_name: name,
             street_address: streetAddress,
             city: cityState,
             zip: zipCode,
             type: type,
             total: total,
-            pizzas: checkoutItemsArray
-        })
+            pizzas: order
+        }
+        axios.post('./api/order', sendData)
         .then(response => {
             console.log('Post successful');
         })
         .catch( error => {
             console.log('Failed to post checkout');
-            alert('Checkout unsuccessful. Please try again.');
+            //alert('Checkout unsuccessful. Please try again.');
         })
 
     }
@@ -55,8 +69,9 @@ function Checkout(){
     // on page load dom will retrieve info from store and set values.
     useEffect(() => {
         console.log('Inside useEffect, calc total');
-        //
-        calcTotal();
+        // use selectors to set data in dom
+        setData();
+        // then calc total
     }, []);
 
 
@@ -82,8 +97,8 @@ function Checkout(){
                     </thead>
 
                     <tbody>
-                        {console.log(checkoutItemsArray)}
-                        {checkoutItemsArray.map((item, index) => {
+                        {console.log(order)}
+                        {order.map((item, index) => {
                             return(
                                 <tr key={index}>
                                     <td>{item.name}</td>
@@ -93,7 +108,7 @@ function Checkout(){
                         })}
                     </tbody>
                 </table>
-                <h1>Total: {total}</h1>
+                <h1>Total: {calcTotal(order)}</h1>
                 <button onClick={handleCheckout}>Checkout</button>
             </div>
         </>
