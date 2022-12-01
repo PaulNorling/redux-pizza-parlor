@@ -52,7 +52,7 @@ function Checkout(){
             city: cityState,
             zip: zipCode,
             type: type,
-            total: total,
+            total: calcTotal(order),
             pizzas: order
         }
         axios.post('./api/order', sendData)
