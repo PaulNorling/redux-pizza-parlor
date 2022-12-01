@@ -2,12 +2,12 @@ import {useSelector} from 'react-redux'
 import React from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 function Admin(){
 
-    const dispatch = useDispatch();
-
+    //const dispatch = useDispatch();
+    const [order, setOrder] = useState([]);
     useEffect(() => {
         fetchOrders();
       }, []);
@@ -16,14 +16,15 @@ function Admin(){
         axios
           .get('/api/order')
           .then((response) => {
-            dispatch({ type: 'SET_ORDER', payload: response.data });
+            setOrder(response.data)
+            console.log(response.data)
           })
           .catch((error) => {
             alert(error);
           });
       };
 
-    const orderReducer = useSelector(store => store.orderReducer)
+    
     return(
         <>
         <table>
@@ -36,7 +37,7 @@ function Admin(){
                 </tr>
             </thead>
             <tbody >
-            {orderReducer.map(order =>
+            {order.map(order =>
               <tr key={order.id}>
                 <td>{order.customer_name}</td>
                 <td>{order.time}</td>
