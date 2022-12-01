@@ -22,12 +22,21 @@ const pizzaReducer = (state = [], action) => {
     return state;
   }
 
+  const pizzaOrderReducer = (state =[], action) => {
+    if (action.type === 'SET_PIZZAS') {
+      console.log('pizzaOrderRuder ', action.payload)
+      return action.payload;
+    }
+    return state;
+  }
+
 
 
 const storeInstance = createStore(
     combineReducers({
       pizzaReducer,
-      orderReducer
+      orderReducer,
+      pizzaOrderReducer
     }),
     applyMiddleware(logger),
   );
