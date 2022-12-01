@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 function PizzaItem({ pizza }) {
   const dispatch = useDispatch();
   const dispatchPizza = () => {
-    dispatch({ type: 'SET_PIZZAS', payload: pizza.id });
+    dispatch({
+      type: 'SET_PIZZAS',
+      payload: { id: pizza.id, price: pizza.price, name: pizza.name },
+    });
   };
 
   return (
