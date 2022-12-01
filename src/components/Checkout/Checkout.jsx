@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function Checkout(){
     const [name, setName] = useState('NAME PLACEHOLDER');
@@ -16,6 +17,12 @@ function Checkout(){
         ]
     )
 
+    const handleCheckout = () => {
+        console.log('Checkout Attempt');
+        //pass object to database as order
+
+    }
+
 
     return(
         <>
@@ -29,7 +36,7 @@ function Checkout(){
                 </div>
                 <h2 id="deliver-takeout">{deliverOrTakeout}</h2>
             </div>
-            <table>
+            <table id='user-order-recipe'>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -39,9 +46,18 @@ function Checkout(){
 
                 <tbody>
                     {console.log(checkoutItemsArray)}
+                    {checkoutItemsArray.map((item, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{item.name}</td>
+                                <td>{item.price}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
-        
+            <h1>Total: </h1>
+            <button onClick={handleCheckout}>Checkout</button>
         </div>
         </>
     )
