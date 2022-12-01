@@ -55,6 +55,7 @@ function Checkout(){
     }
 
 
+
     return(
         <>
         <h1>Step 3: Checkout</h1>
@@ -87,7 +88,7 @@ function Checkout(){
                     })}
                 </tbody>
             </table>
-            <h1>Total: </h1>
+            <h1>Total: {total}</h1>
             <button onClick={handleCheckout}>Checkout</button>
         </div>
         </>
