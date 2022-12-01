@@ -19,6 +19,7 @@ const pizzaReducer = (state = [], action) => {
       console.log('orderReducer', action.payload);
       return action.payload;
     }
+    console.log('orderReducer')
     return state;
   }
 

@@ -32,3 +32,8 @@ CREATE TABLE "line_item" (
 	"pizza_id" INT REFERENCES "pizza",
 	"quantity" INT NOT NULL
 );
+
+INSERT INTO "orders" ("id", "customer_name", "street_address", "city", "zip", "type", "total")
+VALUES ('1', 'paul', '476', 'somerset', '54025', 'card', '100000000' ),('2', 'Charissa', '476', 'somerset', '54025', 'delivery', '100000000' ),('3', 'Anders', '476', 'somerset', '54025', 'delivery', '900000000' );
+
+TRUNCATE TABLE "orders","line_item";
