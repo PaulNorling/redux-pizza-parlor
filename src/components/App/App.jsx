@@ -4,7 +4,6 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 import SelectYourPizza from '../SelectYourPizza/SelectYourPizza';
 import CustomerInfo from '../CustomerInfo/CustomerInfo';
@@ -13,12 +12,7 @@ import Admin from '../Admin/Admin';
 
 function App() {
   const dispatch = useDispatch();
-  const pizzaOrder = useSelector((store) => store.pizzaOrderReducer);
-  let totalCost = 0;
-  for (let pizza of pizzaOrder) {
-    totalCost = totalCost + pizza.price;
-  }
-  console.log('TOTAL:', totalCost);
+
   useEffect(() => {
     console.log('Inside useEffect, first render');
     fetchPizzas();
@@ -40,7 +34,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Prime Pizza</h1>
-        {totalCost === 0 ? <p></p> : <p>Total: {totalCost}</p>}
       </header>
       <Router>
         <nav>

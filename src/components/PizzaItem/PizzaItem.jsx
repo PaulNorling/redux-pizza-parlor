@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import './PizzaItem.css';
 
 function PizzaItem({ pizza }) {
   const dispatch = useDispatch();

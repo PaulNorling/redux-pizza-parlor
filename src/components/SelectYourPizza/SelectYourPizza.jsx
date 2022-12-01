@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PizzaItem from '../PizzaItem/PizzaItem.jsx';
+import './SelectYourPizza.css';
 
 function SelectYourPizza() {
   const reduxStore = useSelector((store) => store.pizzaReducer);
@@ -11,11 +12,13 @@ function SelectYourPizza() {
   };
 
   return (
-    <div className="select-your-pizza">
+    <div>
       <h1>Step 1: Select Your Pizza</h1>
-      {reduxStore.map((pizza) => {
-        return <PizzaItem key={pizza.id} pizza={pizza} />;
-      })}
+      <div className="select-your-pizza">
+        {reduxStore.map((pizza) => {
+          return <PizzaItem key={pizza.id} pizza={pizza} />;
+        })}
+      </div>
       <button onClick={navigateNext}>Next</button>
     </div>
   );
