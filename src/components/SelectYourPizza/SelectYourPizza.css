@@ -1,0 +1,4 @@
+.select-your-pizza {
+  display: flex;
+  flex-direction: row;
+}
