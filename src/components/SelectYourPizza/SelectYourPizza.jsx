@@ -19,7 +19,9 @@ function SelectYourPizza() {
           return <PizzaItem key={pizza.id} pizza={pizza} />;
         })}
       </div>
-      <button onClick={navigateNext}>Next</button>
+      <button className="btn" onClick={navigateNext}>
+        Next
+      </button>
     </div>
   );
 }
