@@ -8,7 +8,7 @@ function PizzaItem({ pizza }) {
     setButtonState('REMOVE');
     dispatch({
       type: 'SET_PIZZAS',
-      payload: { id: pizza.id, price: pizza.price, name: pizza.name },
+      payload: { id: pizza.id, price: pizza.price, name: pizza.name, quantity: 1 },
     });
   };
 
