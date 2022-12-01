@@ -58,11 +58,10 @@ function Checkout(){
         axios.post('./api/order', sendData)
         .then(response => {
             console.log('Post successful');
-            history('/');
         })
         .catch( error => {
             console.log('Failed to post checkout');
-            alert('Checkout unsuccessful. Please try again.');
+            //alert('Checkout unsuccessful. Please try again.');
         })
 
     }
