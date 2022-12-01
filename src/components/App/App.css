@@ -13,3 +13,37 @@
 .App-title {
   font-size: 2em;
 }
+
+table {
+  border-collapse: collapse;
+  width: 90vw;
+  margin: auto;
+}
+
+table,
+th,
+td {
+  text-align: left;
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+th {
+  background-color: rgb(164, 162, 162);
+  padding-left: 10px;
+}
+
+tr {
+  height:60px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
