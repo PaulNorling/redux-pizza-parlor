@@ -1,0 +1,8 @@
+#customerInfoBtn {
+    background-color: rgb(94, 198, 233);
+    height: 45px;
+    width: 160px;
+    border-color: transparent;
+    border-radius: 4px;
+    box-shadow: 1px 5px 5px 1px grey;
+}

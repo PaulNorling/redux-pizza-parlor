@@ -1,3 +1,4 @@
+import './Checkout.css';
 import { useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -109,7 +110,7 @@ function Checkout(){
                     </tbody>
                 </table>
                 <h1>Total: {calcTotal(order)}</h1>
-                <button onClick={handleCheckout}>Checkout</button>
+                <button id='customerInfoBtn' onClick={handleCheckout}>Checkout</button>
             </div>
         </>
     )
