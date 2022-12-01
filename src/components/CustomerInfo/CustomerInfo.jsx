@@ -9,9 +9,7 @@ function CustomerInfo(){
     const reduxStore = useSelector((store) => store.orderReducer);
     const history = useHistory();
     const dispatch = useDispatch();
-    // const navigateNext = () => {
-    //     history.push('/Checkout');
-    // };
+
     const [newName, setNewName] = useState('');
     const [newStreetAddress, setNewStreetAddress] = useState('');
     const [newCity, setNewCity] = useState('');
@@ -21,7 +19,7 @@ function CustomerInfo(){
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch({type: 'SET_ORDER', payload: {newName, newStreetAddress, newCity, newZip, type}})
-
+        history.push('/Checkout')
     }
 
     return(
@@ -72,11 +70,11 @@ function CustomerInfo(){
                 value='pickup'
                 onChange={(event) => {setType(event.target.value)}}
                 /></label><br/>
-            <button type="submit">NEXT</button>
+            <button type="submit" >NEXT</button>
         </form><br/>
 
         </>
     )
 }
-// onClick={navigateNext}
+
 export default CustomerInfo;
