@@ -24,7 +24,7 @@ function CustomerInfo(){
 
     return(
         <>
-        <h2>Customer Info</h2>
+        <h2>Customer Info:</h2>
         <form onSubmit={handleSubmit} id='customerInputs'>
             <input
                 className='inputFields'
@@ -70,7 +70,7 @@ function CustomerInfo(){
                 value='pickup'
                 onChange={(event) => {setType(event.target.value)}}
                 /></label><br/>
-            <button type="submit" >NEXT</button>
+            <button id='customerInfoBtn' type="submit" >NEXT</button>
         </form><br/>
 
         </>
