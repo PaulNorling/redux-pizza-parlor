@@ -2,7 +2,19 @@ import { useState } from 'react';
 
 function Checkout(){
     const [name, setName] = useState('NAME PLACEHOLDER');
-    const [streetAddress, setStreeAddress] = useState('555 Applewood Lane');
+    const [streetAddress, setStreetAddress] = useState('555 Applewood Lane (Placeholder)');
+    const [cityState, setCityState] = useState('Minneapolis, MN (Placeholder)')
+
+    const [deliverOrTakeout, setDeliverOrTakeout] = useState('For Deliver')
+
+    const [checkoutItemsArray, setCheckoutItemArray] = useState(
+        [
+            {name:'pep', price: 2.12}, 
+            {name:'pep1', price: 3.12},
+            {name:'pep2', price: 4.12},
+            {name:'pep3', price: 5.12}
+        ]
+    )
 
 
     return(
@@ -13,9 +25,9 @@ function Checkout(){
                 <div id="user-info">
                     <p id="user-name">{name}</p>
                     <p id="user-street-address">{streetAddress}</p>
-                    <p id="user-city-state">Minneapolis, MN</p>
+                    <p id="user-city-state">{cityState}</p>
                 </div>
-                <h2 id="deliver-takeout">For Delivery</h2>
+                <h2 id="deliver-takeout">{deliverOrTakeout}</h2>
             </div>
             <table>
                 <thead>
@@ -24,8 +36,9 @@ function Checkout(){
                         <th>Cost</th>
                     </tr>
                 </thead>
-                <tbody>
 
+                <tbody>
+                    {console.log(checkoutItemsArray)}
                 </tbody>
             </table>
         
