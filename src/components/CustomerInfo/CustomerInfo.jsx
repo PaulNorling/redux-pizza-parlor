@@ -28,12 +28,19 @@ function CustomerInfo(){
             /><br/>
             <input
                 className='inputFields'
-                type="text"
+                type="number"
             //   value={name}
             //   onChange={}
                 placeholder="Zip"
             /><br/>
         </form>
+        <form>
+            <label for="delivery">Delivery
+                <input type="radio" id="delivery" name="orderType" value="delivery"/></label><br/>
+            <label for="pickup">Pickup
+                <input type="radio" id="pickup" name="orderType" value="pickup"/></label>
+        </form><br/>
+        <button type="submit">NEXT</button>
         </>
     )
 }
