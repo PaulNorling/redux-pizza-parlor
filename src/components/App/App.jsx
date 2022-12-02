@@ -36,12 +36,12 @@ function App() {
         <h1 className="App-title">Prime Pizza</h1>
       </header>
       <Router>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
-              <Link to="/SelectYourPizza">Select Your zza</Link>
-              {/* <a href="/#/">Home</a> */}
-            </li>
+              <Link to="/SelectYourPizza">Select Your zza</Link> */}
+        {/* <a href="/#/">Home</a> */}
+        {/* </li>
             <li>
               <Link to="/CustomerInfo">Customer Info</Link>
             </li>
@@ -52,9 +52,12 @@ function App() {
               <Link to="/Admin">Admin</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* routes go here */}
+        <Route exact path="/">
+          <SelectYourPizza />
+        </Route>
         <Route exact path="/SelectYourPizza">
           <SelectYourPizza />
         </Route>
