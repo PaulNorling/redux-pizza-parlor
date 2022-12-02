@@ -1,12 +1,12 @@
 import './Checkout.css';
 import { useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function Checkout(){
     const history = useHistory();
-
+    const dispatch = useDispatch();
 
     const userInfo = useSelector(store => store.orderReducer);
     console.log('User info: ', userInfo);
@@ -53,12 +53,14 @@ function Checkout(){
             city: cityState,
             zip: zipCode,
             type: type,
-            total: total,
+            total: calcTotal(order),
             pizzas: order
         }
         axios.post('./api/order', sendData)
         .then(response => {
             console.log('Post successful');
+            dispatch({type: 'CLEAR_ALL_ORDERS'});
+            history.push('/SelectYourPizza');
         })
         .catch( error => {
             console.log('Failed to post checkout');

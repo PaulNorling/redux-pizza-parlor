@@ -19,6 +19,10 @@ const orderReducer = (state = [], action) => {
     console.log('orderReducer', action.payload);
     return action.payload;
   }
+  if (action.type === 'CLEAR_ALL_ORDERS'){
+    console.log('Clear Pizza Order Reducer');
+    return [];
+  }
   return state;
 };
 
@@ -26,6 +30,10 @@ const pizzaOrderReducer = (state = [], action) => {
   if (action.type === 'SET_PIZZAS') {
     console.log('pizzaOrderRuducer ', action.payload);
     return [...state, action.payload];
+  }
+  if (action.type === 'CLEAR_ALL_ORDERS'){
+    console.log('Clear Pizza Order Reducer');
+    return [];
   }
   return state;
 };
